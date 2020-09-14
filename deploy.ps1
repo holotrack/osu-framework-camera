@@ -5,7 +5,7 @@ $revision = 0
 try {
     $request = "https://api.nuget.org/v3/registration5-gz-semver2/osu.framework.camera/index.json"
     $entries = Invoke-WebRequest $request | ConvertFrom-Json | Select-Object -expand items
-    $current = $entries[0].items.catalogEntry.version.Split(".")
+    $current = $entries.upper.split(".")
 
     if ( ([int]($current[0]) -eq $year) -and ([int]($current[1]) -eq $monthDay) ) {
         $revision = [int]($current[2]) + 1
