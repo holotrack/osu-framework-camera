@@ -46,6 +46,9 @@ namespace osu.Framework.Graphics.Camera
         public float FrameWidth => (float)(capture?.FrameWidth);
         public float FrameHeight => (float)(capture?.FrameHeight);
 
+        int _flipMode = 1;
+        public int FlipMode => _flipMode;
+
         public CameraSprite(int cameraID = 0)
         {
             CameraID = cameraID;
@@ -81,7 +84,8 @@ namespace osu.Framework.Graphics.Camera
                     clearTexture();
                     continue;
                 }
-                
+
+                Cv2.Flip(image, image, (FlipMode)_flipMode);
                 CaptureData = image.ToBytes(ext:".bmp");
                 using (var stream = new MemoryStream(CaptureData))
                 {
