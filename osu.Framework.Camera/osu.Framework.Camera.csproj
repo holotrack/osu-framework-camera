@@ -4,7 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="ppy.osu.Framework" Version="2020.911.0"/>
-    <PackageReference Include="OpenCvSharp4" Version="4.4.0.20200725"/>
+    <PackageReference Include="OpenCvSharp4" Version="4.4.0.20200915"/>
     <PackageReference Include="DirectShowLib.Standard" Version="1.0.0"/>
   </ItemGroup>
 </Project>
