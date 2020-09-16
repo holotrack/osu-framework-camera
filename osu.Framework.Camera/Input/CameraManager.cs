@@ -100,17 +100,24 @@ namespace osu.Framework.Input
                     throw new PlatformNotSupportedException($"{nameof(RuntimeInfo.OS)} is not supported.");
             }
 
-            for (i = 0; devices.length; i++)
+            // checks for duplicates in the devices
+            // Since the dropdown component in o!f doesn't handle duplicate entries well.
+            for (int i = 0; i < devices.Count; i++)
             {
-                var previousIndex = 0;
                 var qualifiedNames = new List<string>();
                 qualifiedNames.Add(devices[i].Name);
 
-                while (qualifiedNames.Contains(devices[previousIndex].Name))
+                while (qualifiedNames.Contains(devices[i].Name))
                 {
-                    previousIndex++;
+                    var oldDeviceName = devices[i].Name;
+                    var deviceLocation = devices[i].Path;
 
-                    devices[i].Name = $"{devices[i].Name} ({i++})";
+                    devices[i] = new CameraDevice 
+                    {
+                        Name = $"{oldDeviceName} - ({i++})",
+                        Path = deviceLocation 
+                    };
+
                 }
 
             }
