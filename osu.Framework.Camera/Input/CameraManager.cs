@@ -49,7 +49,6 @@ namespace osu.Framework.Input
                 }.Start();
             });
         }
-
         protected virtual IEnumerable<CameraDevice> EnumerateAllDevices()
         {
             // There aren't any good cross-platform friendly examples of camera device enumeration for .NET.
@@ -101,8 +100,24 @@ namespace osu.Framework.Input
                     throw new PlatformNotSupportedException($"{nameof(RuntimeInfo.OS)} is not supported.");
             }
 
+            for (i = 0; devices.length; i++)
+            {
+                var previousIndex = 0;
+                var qualifiedNames = new List<string>();
+                qualifiedNames.Add(devices[i].Name);
+
+                while (qualifiedNames.Contains(devices[previousIndex].Name))
+                {
+                    previousIndex++;
+
+                    devices[i].Name = $"{devices[i].Name} ({i++})";
+                }
+
+            }
+
             return devices;
         }
+
 
         private void syncCameraDevices()
         {
