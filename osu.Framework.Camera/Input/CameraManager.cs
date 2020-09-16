@@ -109,9 +109,8 @@ namespace osu.Framework.Input
                 while (qualifiedNames.Contains(devices[previousIndex].Name))
                 {
                     previousIndex++;
-                    i++;
 
-                    devices[i].Name = $"{devices[i].Name} ({i})";
+                    devices[i].Name = $"{devices[i].Name} ({i++})";
                 }
 
             }
