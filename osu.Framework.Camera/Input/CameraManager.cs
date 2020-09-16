@@ -105,7 +105,6 @@ namespace osu.Framework.Input
             for (int i = 0; i < devices.Count; i++)
             {
                 var qualifiedNames = new List<string>();
-                qualifiedNames.Add(devices[i].Name);
 
                 while (qualifiedNames.Contains(devices[i].Name))
                 {
@@ -119,6 +118,8 @@ namespace osu.Framework.Input
                     };
 
                 }
+
+                qualifiedNames.Add(devices[i].Name);
 
             }
 
