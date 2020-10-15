@@ -16,7 +16,7 @@ namespace osu.Framework.Graphics.Camera
         private Task cameraLoopTask;
         private CancellationTokenSource cameraLoopCanellationSource;
         private VideoCapture capture { get; set; }
-        private readonly Mat image;
+        private Mat image { get; }
 
         private int cameraID = -1;
         public int CameraID
@@ -46,8 +46,7 @@ namespace osu.Framework.Graphics.Camera
         public float FrameWidth => (float)(capture?.FrameWidth);
         public float FrameHeight => (float)(capture?.FrameHeight);
 
-        int _flipMode = 1;
-        public int FlipMode => _flipMode;
+        public int FlipMode { get; set; } = 1;
 
         public CameraSprite(int cameraID = 0)
         {
@@ -85,7 +84,7 @@ namespace osu.Framework.Graphics.Camera
                     continue;
                 }
 
-                Cv2.Flip(image, image, (FlipMode)_flipMode);
+                Cv2.Flip(image, image, (FlipMode)FlipMode);
                 CaptureData = image.ToBytes(ext:".bmp");
                 using (var stream = new MemoryStream(CaptureData))
                 {
