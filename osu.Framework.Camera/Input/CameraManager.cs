@@ -72,13 +72,12 @@ namespace osu.Framework.Input
 
                 case RuntimeInfo.Platform.Linux:
                     var devDir = Directory.EnumerateDirectories(@"/dev/").ToArray();
-                    var regexp = new Regex(@"\/dev\/video\d+");
 
                     for (int i = 0; i < devDir.Length; i++)
                     {
                         string path = $"/dev/video{i}";
                         string name = null;
-                        
+
                         try
                         {
                             using (var reader = new StreamReader(File.OpenRead($"/sys/class/video4linux/video{i}/name")))
@@ -93,7 +92,7 @@ namespace osu.Framework.Input
                             Name = !string.IsNullOrEmpty(name) ? name : path,
                             Path = path
                         });
-                        
+
                     }
                     break;
 

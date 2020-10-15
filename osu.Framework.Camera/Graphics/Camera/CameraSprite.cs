@@ -15,7 +15,7 @@ namespace osu.Framework.Graphics.Camera
     {
         private Task cameraLoopTask;
         private CancellationTokenSource cameraLoopCanellationSource;
-        private VideoCapture capture;
+        private VideoCapture capture { get; set; }
         private readonly Mat image;
 
         private int cameraID = -1;
@@ -80,7 +80,7 @@ namespace osu.Framework.Graphics.Camera
                     clearTexture();
                     continue;
                 }
-                
+
                 CaptureData = image.ToBytes();
                 Texture = Texture.FromStream(new MemoryStream(CaptureData));
                 Colour = Colour4.White;

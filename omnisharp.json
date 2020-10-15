@@ -1,0 +1,14 @@
+{
+    "FormattingOptions": {
+      "enableEditorConfigSupport": true
+    },
+    "FileOptions": {
+      "SystemExcludeSearchPatterns": [
+        "**/node_modules/**/*",
+        "**/bin/**/*",
+        "**/obj/**/*",
+        "**/.git/**/*",
+        "**/CubismFrameworkCS/**/*"
+      ]
+    }
+}
