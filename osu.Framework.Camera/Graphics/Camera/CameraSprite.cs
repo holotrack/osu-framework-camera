@@ -41,9 +41,13 @@ namespace osu.Framework.Graphics.Camera
         /// </summary>
         public byte[] CaptureData { get; private set; }
 
+        public Mat CaptureBuffer => image;
         public VideoCapture Capture => capture;
         public float FrameWidth => (float)(capture?.FrameWidth);
         public float FrameHeight => (float)(capture?.FrameHeight);
+
+        int _flipMode = 1;
+        public int FlipMode => _flipMode;
 
         public CameraSprite(int cameraID = 0)
         {
@@ -81,8 +85,21 @@ namespace osu.Framework.Graphics.Camera
                     continue;
                 }
 
-                CaptureData = image.ToBytes();
-                Texture = Texture.FromStream(new MemoryStream(CaptureData));
+                Cv2.Flip(image, image, (FlipMode)_flipMode);
+                CaptureData = image.ToBytes(ext:".bmp");
+                using (var stream = new MemoryStream(CaptureData))
+                {
+                    if (Texture != null)
+                    {
+                        //TODO (AINL): Copy RAW memory buffer.
+                        var uploader = new TextureUpload(stream);
+                        Texture.SetData(uploader);
+                    }
+                    else
+                    {
+                        Texture = Texture.FromStream(stream);
+                    }
+                }
                 Colour = Colour4.White;
             }
         }
