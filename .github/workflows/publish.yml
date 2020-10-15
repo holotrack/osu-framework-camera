@@ -36,6 +36,6 @@ jobs:
 
       - name: Publish
         run:  |
-           dotnet nuget push ./output/*.nupkg -k ${{secrets.NUGET_API_KEY}} --skip-duplicate --no-symbols true && \
+           dotnet nuget push ./artifacts/*.nupkg -k ${{secrets.NUGET_API_KEY}} --skip-duplicate --no-symbols true && \
            dotnet tool install gpr -g && \
-           gpr push ./output/*.nupkg --repository https://github.com/${{github.repository}} -k ${{github.token}}
+           gpr push ./artifacts/*.nupkg --repository https://github.com/${{github.repository}} -k ${{github.token}}
