@@ -1,5 +1,5 @@
-﻿// Copyright (c) Nitrous <n20gaming2000@gmail.com>. Licensed under the MIT Licence.
-// See the LICENCE file in the repository root for full licence text.
+﻿// Copyright 2020 - 2021 Vignette Project
+// Licensed under MIT. See LICENSE for details.
 
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,6 @@ using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading;
 using DirectShowLib;
 using osu.Framework.Bindables;
@@ -110,10 +109,10 @@ namespace osu.Framework.Input
                     var oldDeviceName = devices[i].Name;
                     var deviceLocation = devices[i].Path;
 
-                    devices[i] = new CameraDevice 
+                    devices[i] = new CameraDevice
                     {
                         Name = $"{oldDeviceName} - ({i++})",
-                        Path = deviceLocation 
+                        Path = deviceLocation
                     };
 
                 }
