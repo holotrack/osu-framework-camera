@@ -12,11 +12,17 @@
     <PackageProjectUrl>https://github.com/holotrack/osu-framework-camera</PackageProjectUrl>
     <RepositoryUrl>https://github.com/holotrack/osu-framework-camera</RepositoryUrl>
   </PropertyGroup>
+  <ItemGroup Label="Icon">
+    <None Include="$(MSBuildThisFileDirectory)assets\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>icon.png</PackagePath>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0" PrivateAssets="All" />
   </ItemGroup>
   <PropertyGroup Label="Code Analysis">
-    <CodeAnalysisRuleSet>..\CodeAnalysis\osu-framework-live2d.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)CodeAnalysis/osu-framework-camera.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Label="Sourcelink3">
     <EnableSourceLink Condition=" '$(OS)' != 'Windows_NT' AND '$(MSBuildRuntimeType)' != 'Core' ">false</EnableSourceLink>

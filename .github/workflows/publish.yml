@@ -1,9 +1,6 @@
 name: publish to nuget
 
-on:
-  push:
-    branches:
-      - master
+on: workflow_dispatch
 
 jobs:
   publish:
@@ -28,13 +25,27 @@ jobs:
           script-path: ./build/build.cake
           target: Build
 
+      - name: Determine Version
+        uses: pCYSl5EDgo/cat@master
+        id: build_version
+        with:
+          path: ./artifacts/version
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: artifact
           path: artifacts/
 
-      - name: Publish
+      - name: Create Release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
+          automatic_release_tag: ${{ steps.build_version.outputs.text }}
+          files: artifacts/*.nupkg
+
+      - name: Publish to NuGet
         run:  |
            dotnet nuget push ./artifacts/*.nupkg -k ${{secrets.NUGET_API_KEY}} --skip-duplicate --no-symbols true && \
            dotnet tool install gpr -g && \
