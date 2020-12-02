@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="OpenCvSharp4" Version="4.5.0.20201013" />
-    <PackageReference Include="ppy.osu.Framework" Version="2020.1129.0">
+    <PackageReference Include="ppy.osu.Framework" Version="2020.1201.0">
       <PrivateAssets>True</PrivateAssets>
     </PackageReference>
     <PackageReference Include="System.Management" Version="5.0.0" />
