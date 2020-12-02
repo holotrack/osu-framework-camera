@@ -3,12 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "osu.Framework.Camera", "osu.Framework.Camera\osu.Framework.Camera.csproj", "{8C37FE95-A98C-49B9-A9FA-4B7303A23D0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "osu.Framework.Camera", "osu.Framework.Camera\osu.Framework.Camera.csproj", "{8C37FE95-A98C-49B9-A9FA-4B7303A23D0C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1CA53DD-7D4D-457A-8F29-DA445A9B3ECB}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "osu.Framework.Camera.Tests", "osu.Framework.Camera.Tests\osu.Framework.Camera.Tests.csproj", "{630F7154-6D52-4705-92E5-F4E48E293FC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +23,10 @@ Global
 		{8C37FE95-A98C-49B9-A9FA-4B7303A23D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C37FE95-A98C-49B9-A9FA-4B7303A23D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C37FE95-A98C-49B9-A9FA-4B7303A23D0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{630F7154-6D52-4705-92E5-F4E48E293FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{630F7154-6D52-4705-92E5-F4E48E293FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{630F7154-6D52-4705-92E5-F4E48E293FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{630F7154-6D52-4705-92E5-F4E48E293FC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
