@@ -17,7 +17,7 @@ namespace osu.Framework.Camera.Tests
         [SetUp]
         public void SetUp()
         {
-            manager = new CameraManager(scheduler = new Scheduler());
+            manager = CameraManager.CreateSuitableManager(scheduler = new Scheduler());
         }
 
         [Test]

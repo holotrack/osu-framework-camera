@@ -9,11 +9,12 @@ using System.Linq;
 using System.Management;
 using System.Threading;
 using osu.Framework.Bindables;
+using osu.Framework.Camera.Platform;
 using osu.Framework.Threading;
 
 namespace osu.Framework.Camera
 {
-    public class CameraManager : IDisposable
+    public abstract class CameraManager : IDisposable
     {
         public IEnumerable<string> CameraDeviceNames => deviceNames;
         public event Action<string> OnNewDevice;
@@ -51,51 +52,22 @@ namespace osu.Framework.Camera
             });
         }
 
-        protected static IEnumerable<CameraInfo> EnumerateAllDevices()
+        public static CameraManager CreateSuitableManager(Scheduler scheduler)
         {
-            yield return new CameraInfo("No Device", string.Empty);
-
             switch (RuntimeInfo.OS)
             {
                 case RuntimeInfo.Platform.Windows:
-                {
-                    using var query = new ManagementObjectSearcher("SELECT * FROM Win32_PnpEntity WHERE PNPClass = \"Camera\"");
-                    using var collection = query.Get();
-
-                    foreach (var device in collection)
-                        yield return new CameraInfo((string)device.GetPropertyValue("Name"), ((string[])device.GetPropertyValue("HardwareID"))[0]);
-
-                    break;
-                }
+                    return new WindowsCameraManager(scheduler);
 
                 case RuntimeInfo.Platform.Linux:
-                {
-                    for (int i = 0; i < Directory.EnumerateDirectories(@"/dev/").Count(); i++)
-                    {
-                        string path = $"/dev/video{i}";
-
-                        string friendlyName;
-                        string friendlyNamePath = $"/sys/class/video4linux/video{i}/name";
-
-                        if (File.Exists(friendlyNamePath))
-                        {
-                            using var reader = new StreamReader(File.OpenRead(friendlyNamePath));
-                            friendlyName = reader.ReadToEnd();
-                        }
-                        else
-                        {
-                            friendlyName = path;
-                        }
-
-                        yield return new CameraInfo(friendlyName, path);
-                    }
-                    break;
-                }
+                    return new LinuxCameraManager(scheduler);
 
                 default:
                     throw new NotSupportedException();
             }
         }
+
+        protected abstract IEnumerable<CameraInfo> EnumerateAllDevices();
 
         private void syncCameraDevices()
         {
