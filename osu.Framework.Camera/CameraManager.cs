@@ -4,9 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.IO;
 using System.Linq;
-using System.Management;
 using System.Threading;
 using osu.Framework.Bindables;
 using osu.Framework.Camera.Platform;
@@ -16,18 +14,36 @@ namespace osu.Framework.Camera
 {
     public abstract class CameraManager : IDisposable
     {
+        /// <summary>
+        /// An <see cref="IEnumerable{string}"/> of camera device names.
+        /// </summary>
         public IEnumerable<string> CameraDeviceNames => deviceNames;
+
+        /// <summary>
+        /// Invoked when a camera device has been connected.
+        /// </summary>
         public event Action<string> OnNewDevice;
+
+        /// <summary>
+        /// Invoked when a camera device has been disconnected.
+        /// </summary>
         public event Action<string> OnLostDevice;
 
+        /// <summary>
+        /// The currently selected device as a <see cref="Bindable{string}"/>.
+        /// </summary>
         public readonly Bindable<string> Current = new Bindable<string>();
+
         private CameraInfo current;
 
         private ImmutableList<CameraInfo> devices = ImmutableList<CameraInfo>.Empty;
+
         private ImmutableList<string> deviceNames = ImmutableList<string>.Empty;
+
         private readonly CameraInfoComparer cameraInfoComparer = new CameraInfoComparer();
 
         private Scheduler scheduler;
+
         private readonly CancellationTokenSource cancellationToken = new CancellationTokenSource();
 
         public CameraManager(Scheduler scheduler)
@@ -52,6 +68,11 @@ namespace osu.Framework.Camera
             });
         }
 
+        /// <summary>
+        /// Creates a <see cref="CameraManager"/> suitable for the host's platform.
+        /// </summary>
+        /// <param name="scheduler">A drawable's scheduler.</param>
+        /// <returns>A <see cref="CameraManager"/>.</returns>
         public static CameraManager CreateSuitableManager(Scheduler scheduler)
         {
             switch (RuntimeInfo.OS)
@@ -150,6 +171,7 @@ namespace osu.Framework.Camera
         private class CameraInfoComparer : IEqualityComparer<CameraInfo>
         {
             public bool Equals(CameraInfo a, CameraInfo b) => a.Path == b.Path;
+
             public int GetHashCode(CameraInfo camera) => camera.Path.GetHashCode();
         }
     }

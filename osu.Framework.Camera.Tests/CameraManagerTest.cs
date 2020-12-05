@@ -12,6 +12,7 @@ namespace osu.Framework.Camera.Tests
     public class CameraManagerTest
     {
         private Scheduler scheduler;
+
         private CameraManager manager;
 
         [SetUp]
