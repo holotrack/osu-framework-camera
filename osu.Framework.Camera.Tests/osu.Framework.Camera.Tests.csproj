@@ -4,17 +4,26 @@
     <TargetFramework>net5.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <StartupObject>osu.Framework.Camera.Tests.Program</StartupObject>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\earth.mp4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\earth.mp4">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.5.0.20201013" />
     <PackageReference Include="ppy.osu.Framework" Version="2020.1201.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Visual\" />
   </ItemGroup>
 
   <ItemGroup>
