@@ -84,7 +84,7 @@ namespace osu.Framework.Camera
                     return new LinuxCameraManager(scheduler);
 
                 default:
-                    throw new NotSupportedException();
+                    throw new PlatformNotSupportedException();
             }
         }
 
