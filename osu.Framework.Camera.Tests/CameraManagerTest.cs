@@ -28,6 +28,7 @@ namespace osu.Framework.Camera.Tests
             scheduler.Update();
             Thread.Sleep(2000);
 
+            // This requires a physical device to be connected to succeed.
             Assert.IsTrue(manager.CameraDeviceNames.Any());
         }
     }
