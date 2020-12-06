@@ -7,7 +7,7 @@ using osu.Framework.Threading;
 
 namespace osu.Framework.Camera.Platform
 {
-    public class WindowsCameraManager : CameraManager
+    internal class WindowsCameraManager : CameraManager
     {
         public WindowsCameraManager(Scheduler scheduler)
             : base(scheduler)

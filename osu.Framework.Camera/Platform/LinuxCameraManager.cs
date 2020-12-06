@@ -8,7 +8,7 @@ using osu.Framework.Threading;
 
 namespace osu.Framework.Camera.Platform
 {
-    public class LinuxCameraManager : CameraManager
+    internal class LinuxCameraManager : CameraManager
     {
         public LinuxCameraManager(Scheduler scheduler)
             : base(scheduler)
