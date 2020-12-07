@@ -32,6 +32,8 @@ namespace osu.Framework.Camera
 
         private int droppedFrames;
 
+        private bool isTempFile;
+
         protected string FilePath;
 
         /// <summary>
@@ -64,6 +66,7 @@ namespace osu.Framework.Camera
                 stream.CopyTo(file);
 
             Capture = new VideoCapture(FilePath);
+            isTempFile = true;
         }
 
         /// <summary>
@@ -146,7 +149,8 @@ namespace osu.Framework.Camera
 
             base.Dispose(disposing);
 
-            File.Delete(FilePath);
+            if (isTempFile)
+                File.Delete(FilePath);
         }
     }
 }
