@@ -1,12 +1,12 @@
 // Copyright 2020 - 2021 Vignette Project
 // Licensed under MIT. See LICENSE for details.
 
+using NUnit.Framework;
 using System.Linq;
 using System.Threading;
-using NUnit.Framework;
 using osu.Framework.Threading;
 
-namespace osu.Framework.Camera.Tests
+namespace Vignette.Application.Camera.Tests
 {
     [TestFixture]
     public class CameraManagerTest

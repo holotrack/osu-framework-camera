@@ -1,7 +1,7 @@
 ﻿// Copyright 2020 - 2021 Vignette Project
 // Licensed under MIT. See LICENSE for details.
 
-namespace osu.Framework.Camera.Graphics
+namespace Vignette.Application.Camera.Graphics
 {
     /// <summary>
     /// A <see cref="CameraDevice"/> that can be added to the scene hierarchy.

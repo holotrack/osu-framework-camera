@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using OpenCvSharp;
 
-namespace osu.Framework.Camera
+namespace Vignette.Application.Camera
 {
     /// <inheritdoc cref="ICameraVirtual"/>
     public class CameraVirtual : Camera, ICameraVirtual

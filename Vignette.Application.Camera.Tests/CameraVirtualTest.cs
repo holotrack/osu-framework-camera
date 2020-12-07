@@ -4,7 +4,7 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace osu.Framework.Camera.Tests
+namespace Vignette.Application.Camera.Tests
 {
     [TestFixture]
     public class CameraVirtualTest

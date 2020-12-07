@@ -2,14 +2,14 @@
 // Licensed under MIT. See LICENSE for details.
 
 using NUnit.Framework;
-using osu.Framework.Camera.Graphics;
-using osu.Framework.Camera.Tests.Resources;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Testing;
 using osuTK;
+using Vignette.Application.Camera.Graphics;
+using Vignette.Application.Camera.Tests.Resources;
 
-namespace osu.Framework.Camera.Tests.Visual
+namespace Vignette.Application.Camera.Tests.Visual
 {
     [Description("Video playback controls")]
     public class TestSceneDrawableCameraVirtual : TestScene

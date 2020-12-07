@@ -1,7 +1,7 @@
 ﻿// Copyright 2020 - 2021 Vignette Project
 // Licensed under MIT. See LICENSE for details.
 
-namespace osu.Framework.Camera
+namespace Vignette.Application.Camera
 {
     /// <summary>
     /// A virtual camera device instantiated from a file.

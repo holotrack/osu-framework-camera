@@ -3,7 +3,7 @@
 
 using System.IO;
 
-namespace osu.Framework.Camera
+namespace Vignette.Application.Camera
 {
     /// <summary>
     /// A physical camera device

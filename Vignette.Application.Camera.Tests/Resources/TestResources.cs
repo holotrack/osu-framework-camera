@@ -4,7 +4,7 @@
 using System.IO;
 using osu.Framework.IO.Stores;
 
-namespace osu.Framework.Camera.Tests.Resources
+namespace Vignette.Application.Camera.Tests.Resources
 {
     public static class TestResources
     {

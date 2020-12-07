@@ -6,11 +6,12 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Threading;
+using osu.Framework;
 using osu.Framework.Bindables;
-using osu.Framework.Camera.Platform;
 using osu.Framework.Threading;
+using Vignette.Application.Camera.Platform;
 
-namespace osu.Framework.Camera
+namespace Vignette.Application.Camera
 {
     public abstract class CameraManager : IDisposable
     {

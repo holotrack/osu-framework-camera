@@ -3,7 +3,7 @@
 
 using System.IO;
 
-namespace osu.Framework.Camera.Tests
+namespace Vignette.Application.Camera.Tests
 {
     internal class TestCameraVirtual : CameraVirtual
     {

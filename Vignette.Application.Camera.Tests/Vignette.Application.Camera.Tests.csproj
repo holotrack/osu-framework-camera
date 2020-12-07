@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
-    <StartupObject>osu.Framework.Camera.Tests.Program</StartupObject>
+    <StartupObject>Vignette.Application.Camera.Tests.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\osu.Framework.Camera\osu.Framework.Camera.csproj" />
+    <ProjectReference Include="..\Vignette.Application.Camera\Vignette.Application.Camera.csproj" />
   </ItemGroup>
 
 </Project>

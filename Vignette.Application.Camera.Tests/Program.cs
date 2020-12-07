@@ -1,9 +1,10 @@
 ﻿// Copyright 2020 - 2021 Vignette Project
 // Licensed under MIT. See LICENSE for details.
 
+using osu.Framework;
 using osu.Framework.Platform;
 
-namespace osu.Framework.Camera.Tests
+namespace Vignette.Application.Camera.Tests
 {
     public static class Program
     {

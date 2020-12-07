@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using OpenCvSharp;
 using osuTK;
 
-namespace osu.Framework.Camera
+namespace Vignette.Application.Camera
 {
     /// <summary>
     /// A base class for camera components which handles device or file access, disposal, and update logic.

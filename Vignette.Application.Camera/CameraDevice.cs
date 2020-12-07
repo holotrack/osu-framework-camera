@@ -4,7 +4,7 @@
 using System;
 using OpenCvSharp;
 
-namespace osu.Framework.Camera
+namespace Vignette.Application.Camera
 {
     /// <inheritdoc cref="ICameraDevice"/>
     public class CameraDevice : Camera, ICameraDevice

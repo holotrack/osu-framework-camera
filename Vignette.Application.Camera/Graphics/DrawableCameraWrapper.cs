@@ -7,7 +7,7 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
 
-namespace osu.Framework.Camera.Graphics
+namespace Vignette.Application.Camera.Graphics
 {
     public abstract class DrawableCameraWrapper : CompositeDrawable, ICamera
     {

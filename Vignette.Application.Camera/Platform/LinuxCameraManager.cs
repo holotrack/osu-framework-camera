@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using osu.Framework.Threading;
 
-namespace osu.Framework.Camera.Platform
+namespace Vignette.Application.Camera.Platform
 {
     internal class LinuxCameraManager : CameraManager
     {

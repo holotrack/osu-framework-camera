@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Management;
 using osu.Framework.Threading;
 
-namespace osu.Framework.Camera.Platform
+namespace Vignette.Application.Camera.Platform
 {
     internal class WindowsCameraManager : CameraManager
     {

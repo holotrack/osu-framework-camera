@@ -2,11 +2,11 @@
 // Licensed under MIT. See LICENSE for details.
 
 using osu.Framework.Graphics;
-using osu.Framework.Camera.Graphics;
 using osu.Framework.Testing;
 using osuTK;
+using Vignette.Application.Camera.Graphics;
 
-namespace osu.Framework.Camera.Tests.Visual
+namespace Vignette.Application.Camera.Tests.Visual
 {
     public class TestSceneDrawableCameraDevice : TestScene
     {
