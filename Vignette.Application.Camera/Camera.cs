@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using OpenCvSharp;
+using osu.Framework.Logging;
 using osuTK;
 
 namespace Vignette.Application.Camera
@@ -74,11 +75,21 @@ namespace Vignette.Application.Camera
 
         protected Mat Mat;
 
+        private readonly EncodingFormat format;
+
+        private readonly ImageEncodingParam[] encodingParams;
+
         private CancellationTokenSource decodingTaskCancellationToken;
 
         private Task decodingTask;
 
         internal VideoCapture Capture;
+
+        public Camera(EncodingFormat format = EncodingFormat.PNG, ImageEncodingParam[] encodingParams = null)
+        {
+            this.format = format;
+            this.encodingParams = encodingParams;
+        }
 
         /// <summary>
         /// Starts the decoding process for this camera.
@@ -136,7 +147,10 @@ namespace Vignette.Application.Camera
                 decodingTask.Wait();
 
             OnTick = null;
+
+            decodingTask.Dispose();
             decodingTask = null;
+
             decodingTaskCancellationToken.Dispose();
             decodingTaskCancellationToken = null;
 
@@ -157,18 +171,23 @@ namespace Vignette.Application.Camera
                 if (Paused)
                     continue;
 
-                // Don't do anything when there are no more frames or the device has been disconnected.
-                if (!Capture.Grab())
-                    continue;
+                try
+                {
+                    // Don't do anything when there are no more frames or the device has been disconnected.
+                    if (!Capture.Grab())
+                        continue;
 
-                Mat = Capture.RetrieveMat();
+                    Mat = Capture.RetrieveMat();
 
-                // Bitmap seems to be the least CPU intensive format.
-                if (!Mat.Empty())
-                    Data = Mat.ToMemoryStream(".bmp");
+                    if (!Mat.Empty())
+                        Data = Mat.ToMemoryStream(getStringfromEncodingFormat(format), encodingParams);
 
-
-                OnTick?.Invoke();
+                    OnTick?.Invoke();
+                }
+                catch (OpenCVException e)
+                {
+                    Logger.Log($@"OpenCV {e.Status} {e.ErrMsg}", LoggingTarget.Runtime, LogLevel.Error);
+                }
 
                 Thread.Sleep((int)Math.Round(1000 / Math.Max(FramesPerSecond, 1)));
             }
@@ -208,6 +227,39 @@ namespace Vignette.Application.Camera
             Paused,
 
             Stopped,
+        }
+
+        private string getStringfromEncodingFormat(EncodingFormat format)
+        {
+            switch (format)
+            {
+                case EncodingFormat.PNG:
+                    return ".png";
+
+                case EncodingFormat.JPEG:
+                    return ".jpg";
+
+                case EncodingFormat.TIFF:
+                    return ".tif";
+
+                case EncodingFormat.WebP:
+                    return ".webp";
+
+                case EncodingFormat.Bitmap:
+                    return ".bmp";
+
+                case EncodingFormat.JPEG2000:
+                    return ".jp2";
+
+                case EncodingFormat.PBM:
+                    return ".pbm";
+
+                case EncodingFormat.Raster:
+                    return ".ras";
+
+                default:
+                    throw new ArgumentOutOfRangeException($@"""{nameof(format)}"" is not a valid export format.");
+            }
         }
     }
 }

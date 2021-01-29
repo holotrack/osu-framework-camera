@@ -28,11 +28,11 @@ namespace Vignette.Application.Camera
         /// <summary>
         /// Skip frames when this camera resumes from suspension emulating a physical device.
         /// </summary>
-        public bool EmulateDevicePause { get; set; }
+        public bool EmulateDevice { get; set; }
 
         private int droppedFrames;
 
-        private bool isTempFile;
+        private bool hasTempFile;
 
         protected string FilePath;
 
@@ -40,7 +40,10 @@ namespace Vignette.Application.Camera
         /// Create a new virtual camera device from a file.
         /// </summary>
         /// <param name="filePath">File relative to the executing application.</param>
-        public CameraVirtual(string filePath)
+        /// <param name="format">Image format used for encoding.</param>
+        /// <param name="encodingParams">An array of parameters used for encoding.</param>
+        public CameraVirtual(string filePath, EncodingFormat format = EncodingFormat.PNG, ImageEncodingParam[] encodingParams = null)
+            : base(format, encodingParams)
         {
             if (!File.Exists(filePath))
                 throw new FileNotFoundException($"\"{filePath}\" is not found.");
@@ -53,7 +56,10 @@ namespace Vignette.Application.Camera
         /// Create a new virtual camera device from a <see cref="Stream"/>.
         /// </summary>
         /// <param name="stream">A video stream.</param>
-        public CameraVirtual(Stream stream)
+        /// <param name="format">Image format used for encoding.</param>
+        /// <param name="encodingParams">An array of parameters used for encoding.</param>
+        public CameraVirtual(Stream stream, EncodingFormat format = EncodingFormat.PNG, ImageEncodingParam[] encodingParams = null)
+            : base(format, encodingParams)
         {
             if (stream == null)
                 throw new NullReferenceException($"{nameof(stream)} cannot be null.");
@@ -66,7 +72,7 @@ namespace Vignette.Application.Camera
                 stream.CopyTo(file);
 
             Capture = new VideoCapture(FilePath);
-            isTempFile = true;
+            hasTempFile = true;
         }
 
         /// <summary>
@@ -107,7 +113,7 @@ namespace Vignette.Application.Camera
             if (Ready || !Paused)
                 return;
 
-            if (EmulateDevicePause)
+            if (EmulateDevice)
             {
                 if (!Loop)
                 {
@@ -149,7 +155,7 @@ namespace Vignette.Application.Camera
 
             base.Dispose(disposing);
 
-            if (isTempFile)
+            if (hasTempFile)
                 File.Delete(FilePath);
         }
     }

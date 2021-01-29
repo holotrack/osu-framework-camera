@@ -115,7 +115,10 @@ namespace Vignette.Application.Camera
         /// Create a new camera from a physical device.
         /// </summary>
         /// <param name="cameraId">The camera's numeric identifier.</param>
-        public CameraDevice(int cameraId)
+        /// <param name="format">Image format used for encoding.</param>
+        /// <param name="encodingParams">An array of parameters used for encoding.</param>
+        public CameraDevice(int cameraId, EncodingFormat format = EncodingFormat.PNG, ImageEncodingParam[] encodingParams = null)
+            : base(format, encodingParams)
         {
             Capture = new VideoCapture(cameraId);
         }
