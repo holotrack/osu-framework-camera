@@ -165,7 +165,7 @@ namespace Vignette.Application.Camera
 
                 // Bitmap seems to be the least CPU intensive format.
                 if (!Mat.Empty())
-                    Data = Mat.ToMemoryStream(".png");
+                    Data = Mat.ToMemoryStream(".bmp");
 
 
                 OnTick?.Invoke();
