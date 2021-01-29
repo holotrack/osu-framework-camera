@@ -6,10 +6,8 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Threading;
-using osu.Framework;
 using osu.Framework.Bindables;
 using osu.Framework.Threading;
-using Vignette.Application.Camera.Platform;
 
 namespace Vignette.Application.Camera
 {
@@ -67,26 +65,6 @@ namespace Vignette.Application.Camera
                     IsBackground = true,
                 }.Start();
             });
-        }
-
-        /// <summary>
-        /// Creates a <see cref="CameraManager"/> suitable for the host's platform.
-        /// </summary>
-        /// <param name="scheduler">A drawable's scheduler.</param>
-        /// <returns>A <see cref="CameraManager"/>.</returns>
-        public static CameraManager CreateSuitableManager(Scheduler scheduler)
-        {
-            switch (RuntimeInfo.OS)
-            {
-                case RuntimeInfo.Platform.Windows:
-                    return new WindowsCameraManager(scheduler);
-
-                case RuntimeInfo.Platform.Linux:
-                    return new LinuxCameraManager(scheduler);
-
-                default:
-                    throw new PlatformNotSupportedException();
-            }
         }
 
         protected abstract IEnumerable<CameraInfo> EnumerateAllDevices();

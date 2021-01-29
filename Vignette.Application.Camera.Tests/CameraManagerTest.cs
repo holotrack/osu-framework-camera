@@ -2,9 +2,12 @@
 // Licensed under MIT. See LICENSE for details.
 
 using NUnit.Framework;
+using System;
 using System.Linq;
 using System.Threading;
 using osu.Framework.Threading;
+using osu.Framework;
+using Vignette.Application.Camera.Platform;
 
 namespace Vignette.Application.Camera.Tests
 {
@@ -18,7 +21,7 @@ namespace Vignette.Application.Camera.Tests
         [SetUp]
         public void SetUp()
         {
-            manager = CameraManager.CreateSuitableManager(scheduler = new Scheduler());
+            manager = CreateSuitableManager(scheduler = new Scheduler());
         }
 
         [Test]
@@ -30,6 +33,21 @@ namespace Vignette.Application.Camera.Tests
 
             // This requires a physical device to be connected to succeed.
             Assert.IsTrue(manager.CameraDeviceNames.Any());
+        }
+
+        protected virtual CameraManager CreateSuitableManager(Scheduler scheduler)
+        {
+            switch (RuntimeInfo.OS)
+            {
+                case RuntimeInfo.Platform.Windows:
+                    return new LegacyWindowsCameraManager(scheduler);
+
+                case RuntimeInfo.Platform.Linux:
+                    return new LinuxCameraManager(scheduler);
+
+                default:
+                    throw new PlatformNotSupportedException();
+            }
         }
     }
 }

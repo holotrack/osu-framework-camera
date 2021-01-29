@@ -8,7 +8,7 @@ using osu.Framework.Threading;
 
 namespace Vignette.Application.Camera.Platform
 {
-    internal class LinuxCameraManager : CameraManager
+    public class LinuxCameraManager : CameraManager
     {
         public LinuxCameraManager(Scheduler scheduler)
             : base(scheduler)

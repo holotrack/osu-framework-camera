@@ -7,16 +7,16 @@ using osu.Framework.Threading;
 
 namespace Vignette.Application.Camera.Platform
 {
-    internal class WindowsCameraManager : CameraManager
+    public class LegacyWindowsCameraManager : CameraManager
     {
-        public WindowsCameraManager(Scheduler scheduler)
+        public LegacyWindowsCameraManager(Scheduler scheduler)
             : base(scheduler)
         {
         }
 
         protected override IEnumerable<CameraInfo> EnumerateAllDevices()
         {
-            using var query = new ManagementObjectSearcher("SELECT * FROM Win32_PnpEntity WHERE PNPClass = \"Camera\"");
+            using var query = new ManagementObjectSearcher(@"SELECT * FROM Win32_PnpEntity WHERE PNPClass = ""Camera""");
             using var collection = query.Get();
 
             foreach (var device in collection)

@@ -29,9 +29,13 @@ public void Main()
 }
 ```
 
-#### Additional Notes
+#### Notes
 The package only includes `OpenCVSharp4`. Please include its runtime libraries specific to the platform you are targeting.
 See: [OpenCVSharp's Installation Guide](https://github.com/shimat/opencvsharp/blob/master/README.md#installation)
+
+#### For Windows:
+Use `Vignette.Application.Camera.Windows` for Windows 10 October 2019 Update support.
+Otherwise, use `Vignette.Application.Camera.Windows.Legacy` for Windows 7 and onwards.
 
 ### License
 This library is under the MIT License (see [LICENSE](./LICENSE.txt) / [tl;dr](https://tldrlegal.com/license/mit-license)).
