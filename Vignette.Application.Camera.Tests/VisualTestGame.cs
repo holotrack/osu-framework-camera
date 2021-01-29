@@ -23,7 +23,7 @@ namespace Vignette.Application.Camera.Tests
                 {
                     Children = new Drawable[]
                     {
-                        new TestBrowser(),
+                        new TestBrowser("Vignette"),
                         new CursorContainer(),
                     },
                 }
