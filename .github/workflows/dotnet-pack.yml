@@ -49,7 +49,7 @@ jobs:
         with:
           upload_url: ${{ needs.setup.outputs.upload-url }}
           asset_path: ${{ github.workspace }}/output/${{ matrix.project }}.${{ needs.setup.outputs.version }}.nupkg
-          asset_name: Vignette.Application.Camera.${{ needs.setup.outputs.version }}.nupkg
+          asset_name: ${{ matrix.project }}.${{ needs.setup.outputs.version }}.nupkg
           asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ github.token }}
