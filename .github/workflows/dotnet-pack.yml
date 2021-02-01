@@ -1,22 +1,15 @@
 on: workflow_dispatch
 name: Pack
 jobs:
-  pack:
+  setup:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 5.0.x
 
       - id: get-version
         name: Set Version
         shell: pwsh
         run: ./.github/workflows/get-version.ps1 ${{ github.repository }}
-      
-      - name: Pack
-        run: dotnet pack Vignette.Application.Camera/Vignette.Application.Camera.csproj --nologo -o output -c Release -p:PackageVersion=${{ steps.get-version.outputs.version }}
       
       - id: create-release
         name: Create Release
@@ -27,13 +20,36 @@ jobs:
           release_name: ${{ steps.get-version.outputs.version }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
+    outputs:
+      version: ${{ steps.get-version.outputs.version }}
+      upload-url: ${{ steps.create-release.outputs.upload_url }}
+  
+  pack:
+    needs: setup
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        project:
+          - Vignette.Application.Camera
+          - Vignette.Application.Camera.Linux
+          - Vignette.Application.Camera.Windows
+          - Vignette.Application.Camera.Windows.Legacy
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+
+      - name: Pack
+        run: dotnet pack ${{ matrix.project }}/${{ matrix.project }}.csproj --nologo -o output -c Release -p:PackageVersion=${{ needs.setup.outputs.version }}
 
       - name: Attach release artifact
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/output/Vignette.Application.Camera.${{ steps.get-version.outputs.version }}.nupkg
-          asset_name: Vignette.Application.Camera.${{ steps.get-version.outputs.version }}.nupkg
+          upload_url: ${{ needs.setup.outputs.upload-url }}
+          asset_path: ${{ github.workspace }}/output/${{ matrix.project }}.${{ needs.setup.outputs.version }}.nupkg
+          asset_name: Vignette.Application.Camera.${{ needs.setup.outputs.version }}.nupkg
           asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -41,4 +57,5 @@ jobs:
       - name: Publish
         run: |
           dotnet nuget add source https://nuget.pkg.github.com/vignette-project/index.json -n github -u vignette-project -p ${{ secrets.GITHUB_TOKEN }}
-          dotnet nuget push ${{ github.workspace }}/output/Vignette.Application.Camera.${{ steps.get-version.outputs.version }}.nupkg --skip-duplicate --source github
+          dotnet nuget push ${{ github.workspace }}/output/${{ matrix.project }}.${{ needs.setup.outputs.version }}.nupkg --skip-duplicate --source github
+
