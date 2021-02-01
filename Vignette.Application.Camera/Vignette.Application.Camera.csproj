@@ -5,6 +5,12 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>Vignette.Application.Camera</PackageId>
+    <PackageTags>opencv;osu;osu!framework;vignette</PackageTags>
+    <RepositoryUrl>https://github.com/vignette-project/vignette-application-camera/</RepositoryUrl>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="OpenCvSharp4" Version="4.5.1.20210123" />
     <PackageReference Include="ppy.osu.Framework" Version="2021.128.0">

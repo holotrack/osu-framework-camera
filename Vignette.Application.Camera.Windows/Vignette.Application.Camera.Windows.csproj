@@ -4,6 +4,12 @@
     <TargetFramework>net5.0-windows10.0.17763.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>Vignette.Application.Camera.Windows</PackageId>
+    <PackageTags>opencv;osu;osu!framework;vignette</PackageTags>
+    <RepositoryUrl>https://github.com/vignette-project/vignette-application-camera/</RepositoryUrl>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Vignette.Application.Camera\Vignette.Application.Camera.csproj" />
   </ItemGroup>
