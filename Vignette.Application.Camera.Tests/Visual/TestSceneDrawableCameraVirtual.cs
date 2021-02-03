@@ -30,7 +30,7 @@ namespace Vignette.Application.Camera.Tests.Visual
             base.Update();
 
             info.Text = (camera != null && !camera.IsDisposed)
-                ? $"Frame: {camera.Position} / {camera.FrameCount} | FPS: {camera.FramesPerSecond} | State: {camera.State:G}"
+                ? $"Frame: {camera.Position} / {camera.FrameCount} | FPS: {camera.FramesPerSecond} | State: {camera.State}"
                 : string.Empty;
         }
 

@@ -2,6 +2,7 @@
 // Licensed under MIT. See LICENSE for details.
 
 using System;
+using System.IO;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
@@ -11,6 +12,18 @@ namespace Vignette.Application.Camera.Graphics
 {
     public abstract class DrawableCameraWrapper : CompositeDrawable, ICamera
     {
+        public double FramesPerSecond => Camera.FramesPerSecond;
+
+        public Stream Data => Camera.Data;
+
+        public bool Paused => Camera.Paused;
+
+        public bool Started => Camera.Started;
+
+        public bool Stopped => Camera.Stopped;
+
+        public bool Ready => Camera.Ready;
+
         protected readonly Camera Camera;
 
         private readonly Sprite sprite;
@@ -38,16 +51,12 @@ namespace Vignette.Application.Camera.Graphics
             camera.OnTick += () => sprite.Texture = Texture.FromStream(camera.Data);
         }
 
-        /// <inheritdoc cref="Camera.Pause"/>
         public void Pause() => Camera.Pause();
 
-        /// <inheritdoc cref="Camera.Resume"/>
         public void Resume() => Camera.Resume();
 
-        /// <inheritdoc cref="Camera.Start"/>
         public void Start() => Camera.Start();
 
-        /// <inheritdoc cref="Camera.Stop"/>
         public void Stop(bool waitForDecoder) => Camera.Stop(waitForDecoder);
 
         protected override void Dispose(bool isDisposing)

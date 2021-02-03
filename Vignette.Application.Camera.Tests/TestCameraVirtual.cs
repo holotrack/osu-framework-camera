@@ -10,7 +10,7 @@ namespace Vignette.Application.Camera.Tests
     {
         public new string FilePath => base.FilePath;
 
-        public new DecoderState State => base.State;
+        public new string State => base.State.ToString();
 
         public TestCameraVirtual(Stream stream)
             : base(stream, EncodingFormat.JPEG, new[]
