@@ -7,6 +7,7 @@ using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
+using osu.Framework.Threading;
 
 namespace Vignette.Application.Camera.Graphics
 {
@@ -25,6 +26,8 @@ namespace Vignette.Application.Camera.Graphics
         public bool Ready => Camera.Ready;
 
         protected readonly Camera Camera;
+
+        private ScheduledDelegate scheduled;
 
         private readonly Sprite sprite;
         
@@ -48,7 +51,11 @@ namespace Vignette.Application.Camera.Graphics
                 Origin = Anchor.Centre,
             });
 
-            camera.OnTick += () => sprite.Texture = Texture.FromStream(camera.Data);
+            camera.OnTick += () =>
+            {
+                scheduled?.Cancel();
+                scheduled = Schedule(() => sprite.Texture = Texture.FromStream(camera.Data));
+            };
         }
 
         public void Pause() => Camera.Pause();
