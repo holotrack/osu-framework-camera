@@ -16,29 +16,14 @@ namespace Vignette.Application.Camera
     /// </summary>
     public abstract class Camera : IDisposable, ICamera
     {
-        /// <summary>
-        /// The output image width.
-        /// </summary>
         public float Width => (Capture.IsDisposed) ? 0 : Capture.FrameWidth;
 
-        /// <summary>
-        /// The output image height.
-        /// </summary>
         public float Height => (Capture.IsDisposed) ? 0 : Capture.FrameHeight;
 
-        /// <summary>
-        /// The output image size.
-        /// </summary>
         public Vector2 Size => new Vector2(Width, Height);
 
-        /// <summary>
-        /// The frequency of frames outputted by the device in seconds.
-        /// </summary>
         public double FramesPerSecond => (Capture.IsDisposed) ? 0 : Capture.Fps;
 
-        /// <summary>
-        /// The data stream outputted from the capture device.
-        /// </summary>
         public Stream Data { get; private set; }
 
         /// <summary>
@@ -46,24 +31,12 @@ namespace Vignette.Application.Camera
         /// </summary>
         public event Action OnTick;
 
-        /// <summary>
-        /// The paused state of this <see cref="Camera"/>.
-        /// </summary>
         public bool Paused => State == DecoderState.Paused;
 
-        /// <summary>
-        /// Whether this <see cref="Camera"/> has started decoding.
-        /// </summary>
         public bool Started => State == DecoderState.Started;
 
-        /// <summary>
-        /// Whether this <see cref="Camera"/> has finished or stopped decoding.
-        /// </summary>
         public bool Stopped => State == DecoderState.Stopped;
 
-        /// <summary>
-        /// Whether this <see cref="Camera"/> is ready to start decoding.
-        /// </summary>
         public bool Ready => State == DecoderState.Ready;
 
         /// <summary>
@@ -91,9 +64,6 @@ namespace Vignette.Application.Camera
             this.encodingParams = encodingParams;
         }
 
-        /// <summary>
-        /// Starts the decoding process for this camera.
-        /// </summary>
         public void Start()
         {
             // throw if we encounter errors
@@ -108,9 +78,6 @@ namespace Vignette.Application.Camera
             State = DecoderState.Started;
         }
 
-        /// <summary>
-        /// Suspends the decoding process.
-        /// </summary>
         public virtual void Pause()
         {
             if (Ready || Paused)
@@ -119,9 +86,6 @@ namespace Vignette.Application.Camera
             State = DecoderState.Paused;
         }
 
-        /// <summary>
-        /// Resumes the decoding process.
-        /// </summary>
         public virtual void Resume()
         {
             if (Ready || !Paused)
@@ -130,10 +94,6 @@ namespace Vignette.Application.Camera
             State = DecoderState.Started;
         }
 
-        /// <summary>
-        /// Ends the decoding process for this camera and cleans up resources.
-        /// </summary>
-        /// <param name="waitForDecoder">Wait for the last tick to finish before proceeding to cleanup.</param>
         public void Stop(bool waitForDecoder)
         {
             // The capture has a reference to the device or file even if decoding hasn't started yet.
@@ -218,17 +178,6 @@ namespace Vignette.Application.Camera
             GC.SuppressFinalize(this);
         }
 
-        public enum DecoderState
-        {
-            Ready,
-
-            Started,
-
-            Paused,
-
-            Stopped,
-        }
-
         private string getStringfromEncodingFormat(EncodingFormat format)
         {
             switch (format)
@@ -260,6 +209,17 @@ namespace Vignette.Application.Camera
                 default:
                     throw new ArgumentOutOfRangeException($@"""{nameof(format)}"" is not a valid export format.");
             }
+        }
+
+        protected enum DecoderState
+        {
+            Ready,
+
+            Started,
+
+            Paused,
+
+            Stopped,
         }
     }
 }
