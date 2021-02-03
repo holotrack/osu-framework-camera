@@ -6,10 +6,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Authors>Vignette Project</Authors>
     <PackageId>Vignette.Application.Camera</PackageId>
-    <PackageTags>opencv;osu;osu!framework;vignette</PackageTags>
-    <RepositoryUrl>https://github.com/vignette-project/vignette-application-camera/</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

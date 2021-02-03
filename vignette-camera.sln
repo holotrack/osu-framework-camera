@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1CA53DD-7D4D-457A-8F29-DA445A9B3ECB}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 	EndProjectSection
@@ -16,11 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vignette.Application.Camera
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vignette.Application.Camera.Windows", "Vignette.Application.Camera.Windows\Vignette.Application.Camera.Windows.csproj", "{E4B656F3-45AB-459D-8704-8BE2218FB264}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vignette.Application.Camera.Windows.Legacy", "Vignette.Application.Camera.Windows.Legacy\Vignette.Application.Camera.Windows.Legacy.csproj", "{954D634B-8B39-4884-893C-0126E387A25F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vignette.Application.Camera.Windows.Legacy", "Vignette.Application.Camera.Windows.Legacy\Vignette.Application.Camera.Windows.Legacy.csproj", "{954D634B-8B39-4884-893C-0126E387A25F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vignette.Application.Camera.Windows.Tests", "Vignette.Application.Camera.Windows.Tests\Vignette.Application.Camera.Windows.Tests.csproj", "{5F7543B7-A5B0-4E5A-A7C5-844812B99FE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vignette.Application.Camera.Windows.Tests", "Vignette.Application.Camera.Windows.Tests\Vignette.Application.Camera.Windows.Tests.csproj", "{5F7543B7-A5B0-4E5A-A7C5-844812B99FE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vignette.Application.Camera.Linux", "Vignette.Application.Camera.Linux\Vignette.Application.Camera.Linux.csproj", "{2805DA59-A849-4E09-AC88-11613B5D05F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vignette.Application.Camera.Linux", "Vignette.Application.Camera.Linux\Vignette.Application.Camera.Linux.csproj", "{2805DA59-A849-4E09-AC88-11613B5D05F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
