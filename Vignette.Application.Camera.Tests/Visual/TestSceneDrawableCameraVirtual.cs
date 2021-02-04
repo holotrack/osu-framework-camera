@@ -7,7 +7,6 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Testing;
 using osuTK;
 using Vignette.Application.Camera.Graphics;
-using Vignette.Application.Camera.Tests.Resources;
 
 namespace Vignette.Application.Camera.Tests.Visual
 {
@@ -39,7 +38,7 @@ namespace Vignette.Application.Camera.Tests.Visual
         {
             AddStep("create camera", () =>
             {
-                camera = new TestCameraVirtual(TestResources.GetStream(@"earth.mp4"));
+                camera = new TestCameraVirtual();
                 drawableCamera = new DrawableCameraVirtual(camera)
                 {
                     Anchor = Anchor.Centre,

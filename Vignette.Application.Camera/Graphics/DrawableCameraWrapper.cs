@@ -15,7 +15,7 @@ namespace Vignette.Application.Camera.Graphics
     {
         public double FramesPerSecond => Camera.FramesPerSecond;
 
-        public Stream Data => Camera.Data;
+        public byte[] Data => Camera.Data;
 
         public bool Paused => Camera.Paused;
 
@@ -54,7 +54,11 @@ namespace Vignette.Application.Camera.Graphics
             camera.OnTick += () =>
             {
                 scheduled?.Cancel();
-                scheduled = Schedule(() => sprite.Texture = Texture.FromStream(camera.Data));
+                scheduled = Schedule(() =>
+                {
+                    using var memory = new MemoryStream(camera.Data);
+                    sprite.Texture = Texture.FromStream(memory);
+                });
             };
         }
 

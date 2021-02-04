@@ -1,7 +1,6 @@
 ﻿// Copyright 2020 - 2021 Vignette Project
 // Licensed under MIT. See LICENSE for details.
 
-using System.IO;
 using osuTK;
 
 namespace Vignette.Application.Camera
@@ -32,9 +31,9 @@ namespace Vignette.Application.Camera
         public double FramesPerSecond { get; }
 
         /// <summary>
-        /// The data stream outputted from the capture device.
+        /// The data output from the capture device.
         /// </summary>
-        public Stream Data { get; }
+        public byte[] Data { get; }
 
         /// <summary>
         /// The paused state of this <see cref="ICamera"/>.

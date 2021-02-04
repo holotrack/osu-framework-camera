@@ -1,8 +1,8 @@
 ﻿// Copyright 2020 - 2021 Vignette Project
 // Licensed under MIT. See LICENSE for details.
 
-using System.IO;
 using OpenCvSharp;
+using Vignette.Application.Camera.Tests.Resources;
 
 namespace Vignette.Application.Camera.Tests
 {
@@ -12,8 +12,8 @@ namespace Vignette.Application.Camera.Tests
 
         public new string State => base.State.ToString();
 
-        public TestCameraVirtual(Stream stream)
-            : base(stream, EncodingFormat.JPEG, new[]
+        public TestCameraVirtual()
+            : base(TestResources.GetStream(@"earth.mp4"), EncodingFormat.JPEG, new[]
             {
                 new ImageEncodingParam(ImwriteFlags.JpegQuality, 20),
                 new ImageEncodingParam(ImwriteFlags.JpegOptimize, 1),

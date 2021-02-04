@@ -12,7 +12,7 @@ namespace Vignette.Application.Camera.Tests
         [Test]
         public void TestFileCaching()
         {
-            var camera = new TestCameraVirtual(new MemoryStream());
+            var camera = new TestCameraVirtual();
             Assert.IsTrue(File.Exists(camera.FilePath));
 
             camera.Dispose();

@@ -24,7 +24,7 @@ namespace Vignette.Application.Camera
 
         public double FramesPerSecond => (Capture.IsDisposed) ? 0 : Capture.Fps;
 
-        public Stream Data { get; private set; }
+        public byte[] Data { get; private set; }
 
         /// <summary>
         /// Fired when a new update occurs. The frequency of invocations is tied to the <see cref="FramesPerSecond"/>.
@@ -140,7 +140,7 @@ namespace Vignette.Application.Camera
                     Mat = Capture.RetrieveMat();
 
                     if (!Mat.Empty())
-                        Data = Mat.ToMemoryStream(getStringfromEncodingFormat(format), encodingParams);
+                        Data = Mat.ToBytes(getStringfromEncodingFormat(format), encodingParams);
 
                     OnTick?.Invoke();
                 }
