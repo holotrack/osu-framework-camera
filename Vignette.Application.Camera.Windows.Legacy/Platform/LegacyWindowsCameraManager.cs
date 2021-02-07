@@ -2,7 +2,7 @@
 // Licensed under MIT. See LICENSE for details.
 
 using System.Collections.Generic;
-using System.Management;
+using DirectShowLib;
 using osu.Framework.Threading;
 
 namespace Vignette.Application.Camera.Platform
@@ -16,11 +16,8 @@ namespace Vignette.Application.Camera.Platform
 
         protected override IEnumerable<CameraInfo> EnumerateAllDevices()
         {
-            using var query = new ManagementObjectSearcher(@"SELECT * FROM Win32_PnpEntity WHERE PNPClass = ""Camera""");
-            using var collection = query.Get();
-
-            foreach (var device in collection)
-                yield return new CameraInfo((string)device.GetPropertyValue("Name"), ((string[])device.GetPropertyValue("HardwareID"))[0]);
+            foreach (var device in DsDevice.GetDevicesOfCat(FilterCategory.VideoInputDevice))
+                yield return new CameraInfo(device.Name, device.DevicePath);
         }
     }
 }

@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DirectShowLib.Standard" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Vignette.Application.Camera\Vignette.Application.Camera.csproj" />
   </ItemGroup>
 
