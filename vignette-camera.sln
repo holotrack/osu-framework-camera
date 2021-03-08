@@ -15,14 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vignette.Application.Camera.Tests", "Vignette.Application.Camera.Tests\Vignette.Application.Camera.Tests.csproj", "{630F7154-6D52-4705-92E5-F4E48E293FC1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vignette.Application.Camera.Windows", "Vignette.Application.Camera.Windows\Vignette.Application.Camera.Windows.csproj", "{E4B656F3-45AB-459D-8704-8BE2218FB264}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vignette.Application.Camera.Windows.Legacy", "Vignette.Application.Camera.Windows.Legacy\Vignette.Application.Camera.Windows.Legacy.csproj", "{954D634B-8B39-4884-893C-0126E387A25F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vignette.Application.Camera.Windows.Tests", "Vignette.Application.Camera.Windows.Tests\Vignette.Application.Camera.Windows.Tests.csproj", "{5F7543B7-A5B0-4E5A-A7C5-844812B99FE3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vignette.Application.Camera.Linux", "Vignette.Application.Camera.Linux\Vignette.Application.Camera.Linux.csproj", "{2805DA59-A849-4E09-AC88-11613B5D05F9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,22 +29,6 @@ Global
 		{630F7154-6D52-4705-92E5-F4E48E293FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{630F7154-6D52-4705-92E5-F4E48E293FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{630F7154-6D52-4705-92E5-F4E48E293FC1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4B656F3-45AB-459D-8704-8BE2218FB264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4B656F3-45AB-459D-8704-8BE2218FB264}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4B656F3-45AB-459D-8704-8BE2218FB264}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4B656F3-45AB-459D-8704-8BE2218FB264}.Release|Any CPU.Build.0 = Release|Any CPU
-		{954D634B-8B39-4884-893C-0126E387A25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{954D634B-8B39-4884-893C-0126E387A25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{954D634B-8B39-4884-893C-0126E387A25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{954D634B-8B39-4884-893C-0126E387A25F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5F7543B7-A5B0-4E5A-A7C5-844812B99FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F7543B7-A5B0-4E5A-A7C5-844812B99FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F7543B7-A5B0-4E5A-A7C5-844812B99FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F7543B7-A5B0-4E5A-A7C5-844812B99FE3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2805DA59-A849-4E09-AC88-11613B5D05F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2805DA59-A849-4E09-AC88-11613B5D05F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2805DA59-A849-4E09-AC88-11613B5D05F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2805DA59-A849-4E09-AC88-11613B5D05F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

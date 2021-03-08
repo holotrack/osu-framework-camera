@@ -27,8 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Vignette.Application.Camera.Linux\Vignette.Application.Camera.Linux.csproj" />
-    <ProjectReference Include="..\Vignette.Application.Camera.Windows.Legacy\Vignette.Application.Camera.Windows.Legacy.csproj" />
     <ProjectReference Include="..\Vignette.Application.Camera\Vignette.Application.Camera.csproj" />
   </ItemGroup>
 

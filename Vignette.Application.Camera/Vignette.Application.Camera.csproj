@@ -10,11 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DirectShowLib.Standard" Version="2.1.0" />
     <PackageReference Include="OpenCvSharp4" Version="4.5.1.20210123" />
     <PackageReference Include="ppy.osu.Framework" Version="2021.128.0">
       <PrivateAssets>True</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="System.Management" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
