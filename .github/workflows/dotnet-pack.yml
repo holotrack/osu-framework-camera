@@ -31,9 +31,6 @@ jobs:
       matrix:
         project:
           - Vignette.Application.Camera
-          - Vignette.Application.Camera.Linux
-          - Vignette.Application.Camera.Windows
-          - Vignette.Application.Camera.Windows.Legacy
     steps:
       - uses: actions/checkout@v2
 

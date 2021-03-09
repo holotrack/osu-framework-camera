@@ -7,9 +7,9 @@ using osu.Framework.Threading;
 
 namespace Vignette.Application.Camera.Platform
 {
-    public class LegacyWindowsCameraManager : CameraManager
+    public class WindowsCameraManager : CameraManager
     {
-        public LegacyWindowsCameraManager(Scheduler scheduler)
+        public WindowsCameraManager(Scheduler scheduler)
             : base(scheduler)
         {
         }
